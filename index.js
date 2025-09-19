@@ -3,155 +3,240 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.codeFrameColumns = codeFrameColumns;
-exports.default = _default;
-var _highlight = require("@babel/highlight");
-var _chalk = _interopRequireWildcard(require("chalk"), true);
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-let chalkWithForcedColor = undefined;
-function getChalk(forceColor) {
-  if (forceColor) {
-    var _chalkWithForcedColor;
-    (_chalkWithForcedColor = chalkWithForcedColor) != null ? _chalkWithForcedColor : chalkWithForcedColor = new _chalk.default.constructor({
-      enabled: true,
-      level: 1
-    });
-    return chalkWithForcedColor;
+exports.DEFAULT_EXTENSIONS = void 0;
+Object.defineProperty(exports, "File", {
+  enumerable: true,
+  get: function () {
+    return _file.default;
   }
-  return _chalk.default;
+});
+Object.defineProperty(exports, "buildExternalHelpers", {
+  enumerable: true,
+  get: function () {
+    return _buildExternalHelpers.default;
+  }
+});
+Object.defineProperty(exports, "createConfigItem", {
+  enumerable: true,
+  get: function () {
+    return _index2.createConfigItem;
+  }
+});
+Object.defineProperty(exports, "createConfigItemAsync", {
+  enumerable: true,
+  get: function () {
+    return _index2.createConfigItemAsync;
+  }
+});
+Object.defineProperty(exports, "createConfigItemSync", {
+  enumerable: true,
+  get: function () {
+    return _index2.createConfigItemSync;
+  }
+});
+Object.defineProperty(exports, "getEnv", {
+  enumerable: true,
+  get: function () {
+    return _environment.getEnv;
+  }
+});
+Object.defineProperty(exports, "loadOptions", {
+  enumerable: true,
+  get: function () {
+    return _index2.loadOptions;
+  }
+});
+Object.defineProperty(exports, "loadOptionsAsync", {
+  enumerable: true,
+  get: function () {
+    return _index2.loadOptionsAsync;
+  }
+});
+Object.defineProperty(exports, "loadOptionsSync", {
+  enumerable: true,
+  get: function () {
+    return _index2.loadOptionsSync;
+  }
+});
+Object.defineProperty(exports, "loadPartialConfig", {
+  enumerable: true,
+  get: function () {
+    return _index2.loadPartialConfig;
+  }
+});
+Object.defineProperty(exports, "loadPartialConfigAsync", {
+  enumerable: true,
+  get: function () {
+    return _index2.loadPartialConfigAsync;
+  }
+});
+Object.defineProperty(exports, "loadPartialConfigSync", {
+  enumerable: true,
+  get: function () {
+    return _index2.loadPartialConfigSync;
+  }
+});
+Object.defineProperty(exports, "parse", {
+  enumerable: true,
+  get: function () {
+    return _parse.parse;
+  }
+});
+Object.defineProperty(exports, "parseAsync", {
+  enumerable: true,
+  get: function () {
+    return _parse.parseAsync;
+  }
+});
+Object.defineProperty(exports, "parseSync", {
+  enumerable: true,
+  get: function () {
+    return _parse.parseSync;
+  }
+});
+Object.defineProperty(exports, "resolvePlugin", {
+  enumerable: true,
+  get: function () {
+    return _index.resolvePlugin;
+  }
+});
+Object.defineProperty(exports, "resolvePreset", {
+  enumerable: true,
+  get: function () {
+    return _index.resolvePreset;
+  }
+});
+Object.defineProperty((0, exports), "template", {
+  enumerable: true,
+  get: function () {
+    return _template().default;
+  }
+});
+Object.defineProperty((0, exports), "tokTypes", {
+  enumerable: true,
+  get: function () {
+    return _parser().tokTypes;
+  }
+});
+Object.defineProperty(exports, "transform", {
+  enumerable: true,
+  get: function () {
+    return _transform.transform;
+  }
+});
+Object.defineProperty(exports, "transformAsync", {
+  enumerable: true,
+  get: function () {
+    return _transform.transformAsync;
+  }
+});
+Object.defineProperty(exports, "transformFile", {
+  enumerable: true,
+  get: function () {
+    return _transformFile.transformFile;
+  }
+});
+Object.defineProperty(exports, "transformFileAsync", {
+  enumerable: true,
+  get: function () {
+    return _transformFile.transformFileAsync;
+  }
+});
+Object.defineProperty(exports, "transformFileSync", {
+  enumerable: true,
+  get: function () {
+    return _transformFile.transformFileSync;
+  }
+});
+Object.defineProperty(exports, "transformFromAst", {
+  enumerable: true,
+  get: function () {
+    return _transformAst.transformFromAst;
+  }
+});
+Object.defineProperty(exports, "transformFromAstAsync", {
+  enumerable: true,
+  get: function () {
+    return _transformAst.transformFromAstAsync;
+  }
+});
+Object.defineProperty(exports, "transformFromAstSync", {
+  enumerable: true,
+  get: function () {
+    return _transformAst.transformFromAstSync;
+  }
+});
+Object.defineProperty(exports, "transformSync", {
+  enumerable: true,
+  get: function () {
+    return _transform.transformSync;
+  }
+});
+Object.defineProperty((0, exports), "traverse", {
+  enumerable: true,
+  get: function () {
+    return _traverse().default;
+  }
+});
+exports.version = exports.types = void 0;
+var _file = require("./transformation/file/file.js");
+var _buildExternalHelpers = require("./tools/build-external-helpers.js");
+var _index = require("./config/files/index.js");
+var _environment = require("./config/helpers/environment.js");
+function _types() {
+  const data = require("@babel/types");
+  _types = function () {
+    return data;
+  };
+  return data;
 }
-let deprecationWarningShown = false;
-function getDefs(chalk) {
-  return {
-    gutter: chalk.grey,
-    marker: chalk.red.bold,
-    message: chalk.red.bold
+Object.defineProperty((0, exports), "types", {
+  enumerable: true,
+  get: function () {
+    return _types();
+  }
+});
+function _parser() {
+  const data = require("@babel/parser");
+  _parser = function () {
+    return data;
+  };
+  return data;
+}
+function _traverse() {
+  const data = require("@babel/traverse");
+  _traverse = function () {
+    return data;
+  };
+  return data;
+}
+function _template() {
+  const data = require("@babel/template");
+  _template = function () {
+    return data;
+  };
+  return data;
+}
+var _index2 = require("./config/index.js");
+var _transform = require("./transform.js");
+var _transformFile = require("./transform-file.js");
+var _transformAst = require("./transform-ast.js");
+var _parse = require("./parse.js");
+var thisFile = require("./index.js");
+;
+const version = exports.version = "7.23.6";
+const DEFAULT_EXTENSIONS = exports.DEFAULT_EXTENSIONS = Object.freeze([".js", ".jsx", ".es6", ".es", ".mjs", ".cjs"]);
+;
+{
+  exports.OptionManager = class OptionManager {
+    init(opts) {
+      return (0, _index2.loadOptionsSync)(opts);
+    }
+  };
+  exports.Plugin = function Plugin(alias) {
+    throw new Error(`The (${alias}) Babel 5 plugin is being run with an unsupported Babel version.`);
   };
 }
-const NEWLINE = /\r\n|[\n\r\u2028\u2029]/;
-function getMarkerLines(loc, source, opts) {
-  const startLoc = Object.assign({
-    column: 0,
-    line: -1
-  }, loc.start);
-  const endLoc = Object.assign({}, startLoc, loc.end);
-  const {
-    linesAbove = 2,
-    linesBelow = 3
-  } = opts || {};
-  const startLine = startLoc.line;
-  const startColumn = startLoc.column;
-  const endLine = endLoc.line;
-  const endColumn = endLoc.column;
-  let start = Math.max(startLine - (linesAbove + 1), 0);
-  let end = Math.min(source.length, endLine + linesBelow);
-  if (startLine === -1) {
-    start = 0;
-  }
-  if (endLine === -1) {
-    end = source.length;
-  }
-  const lineDiff = endLine - startLine;
-  const markerLines = {};
-  if (lineDiff) {
-    for (let i = 0; i <= lineDiff; i++) {
-      const lineNumber = i + startLine;
-      if (!startColumn) {
-        markerLines[lineNumber] = true;
-      } else if (i === 0) {
-        const sourceLength = source[lineNumber - 1].length;
-        markerLines[lineNumber] = [startColumn, sourceLength - startColumn + 1];
-      } else if (i === lineDiff) {
-        markerLines[lineNumber] = [0, endColumn];
-      } else {
-        const sourceLength = source[lineNumber - i].length;
-        markerLines[lineNumber] = [0, sourceLength];
-      }
-    }
-  } else {
-    if (startColumn === endColumn) {
-      if (startColumn) {
-        markerLines[startLine] = [startColumn, 0];
-      } else {
-        markerLines[startLine] = true;
-      }
-    } else {
-      markerLines[startLine] = [startColumn, endColumn - startColumn];
-    }
-  }
-  return {
-    start,
-    end,
-    markerLines
-  };
-}
-function codeFrameColumns(rawLines, loc, opts = {}) {
-  const highlighted = (opts.highlightCode || opts.forceColor) && (0, _highlight.shouldHighlight)(opts);
-  const chalk = getChalk(opts.forceColor);
-  const defs = getDefs(chalk);
-  const maybeHighlight = (chalkFn, string) => {
-    return highlighted ? chalkFn(string) : string;
-  };
-  const lines = rawLines.split(NEWLINE);
-  const {
-    start,
-    end,
-    markerLines
-  } = getMarkerLines(loc, lines, opts);
-  const hasColumns = loc.start && typeof loc.start.column === "number";
-  const numberMaxWidth = String(end).length;
-  const highlightedLines = highlighted ? (0, _highlight.default)(rawLines, opts) : rawLines;
-  let frame = highlightedLines.split(NEWLINE, end).slice(start, end).map((line, index) => {
-    const number = start + 1 + index;
-    const paddedNumber = ` ${number}`.slice(-numberMaxWidth);
-    const gutter = ` ${paddedNumber} |`;
-    const hasMarker = markerLines[number];
-    const lastMarkerLine = !markerLines[number + 1];
-    if (hasMarker) {
-      let markerLine = "";
-      if (Array.isArray(hasMarker)) {
-        const markerSpacing = line.slice(0, Math.max(hasMarker[0] - 1, 0)).replace(/[^\t]/g, " ");
-        const numberOfMarkers = hasMarker[1] || 1;
-        markerLine = ["\n ", maybeHighlight(defs.gutter, gutter.replace(/\d/g, " ")), " ", markerSpacing, maybeHighlight(defs.marker, "^").repeat(numberOfMarkers)].join("");
-        if (lastMarkerLine && opts.message) {
-          markerLine += " " + maybeHighlight(defs.message, opts.message);
-        }
-      }
-      return [maybeHighlight(defs.marker, ">"), maybeHighlight(defs.gutter, gutter), line.length > 0 ? ` ${line}` : "", markerLine].join("");
-    } else {
-      return ` ${maybeHighlight(defs.gutter, gutter)}${line.length > 0 ? ` ${line}` : ""}`;
-    }
-  }).join("\n");
-  if (opts.message && !hasColumns) {
-    frame = `${" ".repeat(numberMaxWidth + 1)}${opts.message}\n${frame}`;
-  }
-  if (highlighted) {
-    return chalk.reset(frame);
-  } else {
-    return frame;
-  }
-}
-function _default(rawLines, lineNumber, colNumber, opts = {}) {
-  if (!deprecationWarningShown) {
-    deprecationWarningShown = true;
-    const message = "Passing lineNumber and colNumber is deprecated to @babel/code-frame. Please use `codeFrameColumns`.";
-    if (process.emitWarning) {
-      process.emitWarning(message, "DeprecationWarning");
-    } else {
-      const deprecationError = new Error(message);
-      deprecationError.name = "DeprecationWarning";
-      console.warn(new Error(message));
-    }
-  }
-  colNumber = Math.max(colNumber, 0);
-  const location = {
-    start: {
-      column: colNumber,
-      line: lineNumber
-    }
-  };
-  return codeFrameColumns(rawLines, location, opts);
-}
+0 && (exports.types = exports.traverse = exports.tokTypes = exports.template = 0);
 
 //# sourceMappingURL=index.js.map
